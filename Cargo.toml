@@ -1,0 +1,24 @@
+[package]
+name = "aoc2023"
+version = "0.1.0"
+edition = "2021"
+publish = false
+authors = ["0xNeffarion <main@neffware.com>"]
+repository = "https://github.com/0xNeffarion/aoc2023.git"
+rust-version = "1.74"
+
+[[bin]]
+path = "src/main.rs"
+name = "aoc2023"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+map-macro = { version = "0.2.6" }
+
+[profile.dev.build-override]
+opt-level = 3
+
+[profile.dev]
+incremental = false
