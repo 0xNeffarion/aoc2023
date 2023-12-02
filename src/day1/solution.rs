@@ -1,15 +1,17 @@
-use std::collections::BTreeMap;
+use std::{collections::BTreeMap, error::Error};
 
 use map_macro::hash_map;
 
-pub fn run() {
+pub fn run() -> Result<(), Box<dyn Error>> {
     let input = crate::read_input_lines(1, 1);
 
-    part_1(&input);
-    part_2(&input);
+    part_1(&input)?;
+    part_2(&input)?;
+
+    Ok(())
 }
 
-fn part_1(input: &[String]) {
+fn part_1(input: &[String]) -> Result<(), Box<dyn Error>> {
     let sum = input
         .iter()
         .map(|line| {
@@ -21,9 +23,11 @@ fn part_1(input: &[String]) {
         .sum::<u32>();
 
     println!("1. Sum: {}", sum);
+
+    Ok(())
 }
 
-fn part_2(input: &[String]) {
+fn part_2(input: &[String]) -> Result<(), Box<dyn Error>> {
     let digits = hash_map! {
         "one" => 1,
         "two" => 2,
@@ -67,4 +71,6 @@ fn part_2(input: &[String]) {
         .sum::<usize>();
 
     println!("2. Sum: {}", sum);
+
+    Ok(())
 }
